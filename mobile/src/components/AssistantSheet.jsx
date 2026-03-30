@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { appColors } from "../constants/theme";
 
@@ -19,6 +20,7 @@ const BOT_RESPONSES = {
 };
 
 export default function AssistantSheet() {
+  const insets = useSafeAreaInsets();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
     { role: "bot", text: "Hi, I am UPI Guard Assistant. Ask about fraud alerts or model health." },
@@ -35,7 +37,7 @@ export default function AssistantSheet() {
   };
 
   return (
-    <View style={styles.wrap} pointerEvents="box-none">
+    <View style={[styles.wrap, { bottom: insets.bottom + 78 }]} pointerEvents="box-none">
       {open ? (
         <View style={styles.panel}>
           <View style={styles.header}>
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   wrap: {
     position: "absolute",
     right: 14,
-    bottom: 18,
+    bottom: 78,
     left: 14,
     alignItems: "flex-end",
   },

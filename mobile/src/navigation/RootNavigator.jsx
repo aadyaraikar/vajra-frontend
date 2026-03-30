@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import LandingScreen from "../screens/landing/LandingScreen";
 import DashboardTabs from "./DashboardTabs";
+import PaymentScreen from "../screens/upi/PaymentScreen";
+import PaymentDecisionScreen from "../screens/upi/PaymentDecisionScreen";
 import { appColors } from "../constants/theme";
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +28,16 @@ export default function RootNavigator() {
       <Stack.Screen
         name="Dashboard"
         component={DashboardTabs}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Payment"
+        component={PaymentScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="PaymentDecision"
+        component={PaymentDecisionScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
